@@ -29,3 +29,21 @@ export async function POST(request) {
     );
   }
 }
+
+export async function GET() {
+  try {
+    const response = await supabase.from("komodo_news").select("*");
+    const articles = response.data;
+
+    return NextResponse.json({ message: "berhasil", data: articles });
+  } catch (error) {
+    console.error("Fetch error:", error.message);
+    return new NextResponse(
+      JSON.stringify({ error: "Failed to fetch or insert news." }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
+}
