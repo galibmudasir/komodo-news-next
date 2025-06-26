@@ -33,7 +33,7 @@ export default function Home() {
           </div>
           <div className="py-4 text-center">
             <Image
-              src={"/images/banner-home-2.jpg"}
+              src={"/images/Banner-home-2.jpg"}
               width={680}
               height={85}
               alt="banner-iklan-2"

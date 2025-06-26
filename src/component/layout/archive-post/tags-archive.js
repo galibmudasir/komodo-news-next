@@ -6,8 +6,6 @@ import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 
 const ArchiveTagsPost = ({ tags }) => {
-  if (!tags) return "tidak ada data";
-
   const [isLoading, setLoading] = useState(true);
   const [data, SetData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
@@ -50,6 +48,8 @@ const ArchiveTagsPost = ({ tags }) => {
 
   const startIndex = currentPage * itemsPerPage;
   const currentItems = data.slice(startIndex, startIndex + itemsPerPage);
+
+  if (!tags) return "tidak ada data";
 
   return (
     <div className="archive-post">

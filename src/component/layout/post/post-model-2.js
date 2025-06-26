@@ -5,10 +5,6 @@ import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 
 const PostModel2 = ({ title, category, jumlah }) => {
-  if (!category || !jumlah) {
-    return <div>not found</div>;
-  }
-
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
@@ -40,6 +36,10 @@ const PostModel2 = ({ title, category, jumlah }) => {
       fetchdata();
     }
   }, [category, jumlah]);
+
+  if (!category || !jumlah) {
+    return <div>not found</div>;
+  }
 
   return (
     <div className="komodo-post-model-2">

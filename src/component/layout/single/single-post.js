@@ -9,8 +9,6 @@ import { dateFormatter } from "@/function/dateFormatter";
 import Link from "next/link";
 
 const SinglePost = ({ id }) => {
-  if (!id) return "detail post tidak ditemukan";
-
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
@@ -39,6 +37,9 @@ const SinglePost = ({ id }) => {
 
     fetchData();
   }, [id]);
+
+  if (!id) return "detail post tidak ditemukan";
+
   return (
     <article className="post-content">
       {isLoading ? (

@@ -7,9 +7,6 @@ import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
 
 const PostSlider = ({ category, jumlah }) => {
-  if (!category || !jumlah) {
-    return <div className="text-center"> tidak ada post</div>;
-  }
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
@@ -42,6 +39,9 @@ const PostSlider = ({ category, jumlah }) => {
 
     fetchData();
   }, [category, jumlah]);
+  if (!category || !jumlah) {
+    return <div className="text-center"> tidak ada post</div>;
+  }
 
   return (
     <div className="post-slider">
