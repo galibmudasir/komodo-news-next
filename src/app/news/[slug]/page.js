@@ -4,7 +4,7 @@ import SinglePost from "@/component/layout/single/single-post";
 import PostModel2 from "@/component/layout/post/post-model-2";
 
 async function getPostData(slug) {
-  const res = await fetch(`${process.env.NEXT_BASEURL}/api/post/slug`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/post/slug`, {
     method: "POST",
     cache: "no-store", // opsional: supaya tidak di-cache
     headers: {
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }) {
       images: [post.data.image_url],
     },
     alternates: {
-      canonical: `${process.env.NEXT_BASEURL}/news/${slug}`,
+      canonical: `${process.env.NEXT_PUBLIC_BASEURL}/news/${slug}`,
     },
   };
 }

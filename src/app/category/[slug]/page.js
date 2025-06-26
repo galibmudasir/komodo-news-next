@@ -4,17 +4,20 @@ import ArchivePost from "@/component/layout/archive-post/category-archive";
 import SidebarArchive from "@/component/layout/archive-post/sidebar-archive";
 
 async function getCategoryData(slug) {
-  const res = await fetch(`${process.env.NEXT_BASEURL}/api/category/slug`, {
-    method: "POST",
-    cache: "no-store", // opsional: supaya tidak di-cache
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      apikey: process.env.NEXT_PUBLIC_APIKEY,
-      slug: slug,
-    }),
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASEURL}/api/category/slug`,
+    {
+      method: "POST",
+      cache: "no-store", // opsional: supaya tidak di-cache
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        apikey: process.env.NEXT_PUBLIC_APIKEY,
+        slug: slug,
+      }),
+    }
+  );
 
   if (!res.ok) return null;
 

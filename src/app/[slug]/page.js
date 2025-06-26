@@ -4,7 +4,7 @@ import SidebarArchive from "@/component/layout/archive-post/sidebar-archive";
 import SinglePage from "@/component/layout/single/single-page";
 
 async function getPageData(slug) {
-  const res = await fetch(`${process.env.NEXT_BASEURL}/api/page/slug`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/page/slug`, {
     method: "POST",
     cache: "no-store", // opsional: supaya tidak di-cache
     headers: {
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }) {
       images: [post.data.thumbnail_url],
     },
     alternates: {
-      canonical: `${process.env.NEXT_BASEURL}/news/${slug}`,
+      canonical: `${process.env.NEXT_PUBLIC_BASEURL}/news/${slug}`,
     },
   };
 }

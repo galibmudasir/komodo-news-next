@@ -4,7 +4,7 @@ import ArchiveTagsPost from "@/component/layout/archive-post/tags-archive";
 import SidebarArchive from "@/component/layout/archive-post/sidebar-archive";
 
 async function getTagsData(slug) {
-  const res = await fetch(`${process.env.NEXT_BASEURL}/api/tags/slug`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/tags/slug`, {
     method: "POST",
     cache: "no-store", // opsional: supaya tidak di-cache
     headers: {
