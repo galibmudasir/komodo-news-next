@@ -8,7 +8,7 @@ async function getTagsData(slug) {
     `${
       process.env.NEXT_PUBLIC_BASEURL
         ? process.env.NEXT_PUBLIC_BASEURL
-        : "komodo-news.vercel.app"
+        : "https://komodo-news.vercel.app"
     }/api/tags/slug`,
     {
       method: "POST",

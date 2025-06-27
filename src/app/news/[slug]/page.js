@@ -8,7 +8,7 @@ async function getPostData(slug) {
     `${
       process.env.NEXT_PUBLIC_BASEURL
         ? process.env.NEXT_PUBLIC_BASEURL
-        : "komodo-news.vercel.app"
+        : "https://komodo-news.vercel.app"
     }/api/post/slug`,
     {
       method: "POST",
@@ -55,7 +55,7 @@ export async function generateMetadata({ params }) {
       canonical: `${
         process.env.NEXT_PUBLIC_BASEURL
           ? process.env.NEXT_PUBLIC_BASEURL
-          : "komodo-news.vercel.app"
+          : "https://komodo-news.vercel.app"
       }/news/${slug}`,
     },
   };
