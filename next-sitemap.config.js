@@ -3,7 +3,7 @@ module.exports = {
   siteUrl: "https://komodo-news.vercel.app",
   generateRobotsTxt: true,
   additionalPaths: async (config) => {
-    const dynamicPages = require("./pages-server.js");
+    const dynamicPages = require("./pages-server");
     return await dynamicPages();
   },
 };
