@@ -4,17 +4,24 @@ import ArchiveTagsPost from "@/component/layout/archive-post/tags-archive";
 import SidebarArchive from "@/component/layout/archive-post/sidebar-archive";
 
 async function getTagsData(slug) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/tags/slug`, {
-    method: "POST",
-    cache: "no-store", // opsional: supaya tidak di-cache
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      apikey: process.env.NEXT_PUBLIC_APIKEY,
-      slug: slug,
-    }),
-  });
+  const res = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_BASEURL
+        ? process.env.NEXT_PUBLIC_BASEURL
+        : "komodo-news.vercel.app"
+    }/api/tags/slug`,
+    {
+      method: "POST",
+      cache: "no-store", // opsional: supaya tidak di-cache
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        apikey: process.env.NEXT_PUBLIC_APIKEY,
+        slug: slug,
+      }),
+    }
+  );
 
   if (!res.ok) return null;
 

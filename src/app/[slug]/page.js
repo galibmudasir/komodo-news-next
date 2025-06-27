@@ -4,17 +4,24 @@ import SidebarArchive from "@/component/layout/archive-post/sidebar-archive";
 import SinglePage from "@/component/layout/single/single-page";
 
 async function getPageData(slug) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/page/slug`, {
-    method: "POST",
-    cache: "no-store", // opsional: supaya tidak di-cache
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      apikey: process.env.NEXT_PUBLIC_APIKEY,
-      slug: slug,
-    }),
-  });
+  const res = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_BASEURL
+        ? process.env.NEXT_PUBLIC_BASEURL
+        : "komodo-news.vercel.app"
+    }/api/page/slug`,
+    {
+      method: "POST",
+      cache: "no-store", // opsional: supaya tidak di-cache
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        apikey: process.env.NEXT_PUBLIC_APIKEY,
+        slug: slug,
+      }),
+    }
+  );
 
   if (!res.ok) return null;
 
@@ -45,7 +52,11 @@ export async function generateMetadata({ params }) {
       images: [post.data.thumbnail_url],
     },
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_BASEURL}/news/${slug}`,
+      canonical: `${
+        process.env.NEXT_PUBLIC_BASEURL
+          ? process.env.NEXT_PUBLIC_BASEURL
+          : "komodo-news.vercel.app"
+      }/news/${slug}`,
     },
   };
 }

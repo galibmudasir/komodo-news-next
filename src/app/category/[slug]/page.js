@@ -5,7 +5,11 @@ import SidebarArchive from "@/component/layout/archive-post/sidebar-archive";
 
 async function getCategoryData(slug) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASEURL}/api/category/slug`,
+    `${
+      process.env.NEXT_PUBLIC_BASEURL
+        ? process.env.NEXT_PUBLIC_BASEURL
+        : "komodo-news.vercel.app"
+    }/api/category/slug`,
     {
       method: "POST",
       cache: "no-store", // opsional: supaya tidak di-cache

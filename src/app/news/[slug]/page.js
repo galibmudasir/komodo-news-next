@@ -4,17 +4,24 @@ import SinglePost from "@/component/layout/single/single-post";
 import PostModel2 from "@/component/layout/post/post-model-2";
 
 async function getPostData(slug) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/post/slug`, {
-    method: "POST",
-    cache: "no-store", // opsional: supaya tidak di-cache
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      apikey: process.env.NEXT_PUBLIC_APIKEY,
-      slug: slug,
-    }),
-  });
+  const res = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_BASEURL
+        ? process.env.NEXT_PUBLIC_BASEURL
+        : "komodo-news.vercel.app"
+    }/api/post/slug`,
+    {
+      method: "POST",
+      cache: "no-store", // opsional: supaya tidak di-cache
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        apikey: process.env.NEXT_PUBLIC_APIKEY,
+        slug: slug,
+      }),
+    }
+  );
 
   if (!res.ok) return null;
 
@@ -45,7 +52,11 @@ export async function generateMetadata({ params }) {
       images: [post.data.image_url],
     },
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_BASEURL}/news/${slug}`,
+      canonical: `${
+        process.env.NEXT_PUBLIC_BASEURL
+          ? process.env.NEXT_PUBLIC_BASEURL
+          : "komodo-news.vercel.app"
+      }/news/${slug}`,
     },
   };
 }
